@@ -38,6 +38,10 @@ namespace UpSkillingDay9
             return instructorModel;
         }
 
+        public void AddInstructor(Instructor instructor) 
+        { 
+            dAL.AddInstructor(instructor);
+        }
         public void UpdateInstructorName(int id, string name) 
         {
             dAL.UpdateInstructorName(id, name);

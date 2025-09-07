@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
+using UpSkillingDay9.Models;
 //using System.Data.SqlClient;
 
 //using System.Data.SqlClient;
@@ -31,6 +32,15 @@ namespace UpSkillingDay9
             return InstructorTable;
         }
 
+        public void AddInstructor(Instructor instructor) 
+        {
+            sqlConnection.Open();
+            var command = new SqlCommand($"INSERT INTO Instructors(Name, Email, Phone, Image,Salary,DepartmentId,CourseId)VALUES ('{instructor.Name}','{instructor.Email}','{instructor.Phone}','{instructor.Image}',{instructor.Salary},{instructor.DepartmentId},{instructor.CourseId}); ", sqlConnection);
+            var result = command.ExecuteNonQuery();
+            Console.WriteLine($"{result} row is affected");
+            Console.WriteLine($"you Add a new instructor with Name:{instructor.Name} Successfully");
+            sqlConnection.Close();
+        }
         public void UpdateInstructorName(int id, string name)
         {
             sqlConnection.Open();
